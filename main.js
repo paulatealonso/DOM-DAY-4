@@ -1,4 +1,3 @@
-const placesRes = document.querySelector("#placesRes")
 const nights = document.querySelector("#nights")
 const places = document.querySelector("#places")
 const calculateCost = document.querySelector("#button1")
@@ -6,13 +5,7 @@ const costHotels = document.querySelector("#costHotel")
 const travelCost = document.querySelector("#travelCost")
 const carsCost = document.querySelector("#carCost")
 const totalCost = document.querySelector("#totalCost")
-
-function calcularCoste(city1, num) {
-    placesRes.textContent = costHotel(placesRes.value)
-}
-
-
-
+const costeTotal = 0
 
 
 function costHotel(num) {
@@ -30,6 +23,8 @@ function carCost(num) {
     if (num >= 7) {
         result = (num * 40) - 50
         return result
+    } else {
+        return num * 40
     }
 }
 
@@ -37,8 +32,8 @@ function carCost(num) {
 
 
 function flyCost(nameCity, num) {
-
     let result = 0
+
     if (nameCity === "Oviedo") {
         result = num * 15
     } else if (nameCity === "Tokio") {
@@ -46,11 +41,23 @@ function flyCost(nameCity, num) {
     } else if (nameCity === "Madrid" || nameCity === "Barcelona") {
         result = num * 90
     }
-    return result
 
     if (num > 3) {
         return result - (result * 0.1)
     } else {
         return result
     }
+}
+
+
+
+function calcularCoste(city1, num) {
+   costHotels.value = costHotel(nights.value)
+   travelCost.value = flyCost(places.value, nights.value)
+   carsCost.value = carCost(nights.value)
+}
+
+
+calculateCost.onclick = () => {
+    calcularCoste()
 }
