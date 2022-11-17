@@ -30,19 +30,18 @@ function carCost(num) {
 
 
 
-
-function flyCost(nameCity, num) {
+function costeAvion(city, num) {
     let result = 0
 
-    if (nameCity === "Oviedo") {
+    if (city === "Oviedo") {
         result = num * 15
-    } else if (nameCity === "Tokio") {
+    } else if (city === "Tokyo") {
         result = num * 700
-    } else if (nameCity === "Madrid" || nameCity === "Barcelona") {
+    } else if (city === "Madrid" || city === "Barcelona") {
         result = num * 90
     }
 
-    if (num > 3) {
+    if (num > 3) { 
         return result - (result * 0.1)
     } else {
         return result
@@ -53,7 +52,7 @@ function flyCost(nameCity, num) {
 
 function calcularCoste(city1, num) {
    costHotels.value = costHotel(nights.value)
-   travelCost.value = flyCost(places.value, nights.value)
+   travelCost.value = costeAvion(places.value , nights.value)
    carsCost.value = carCost(nights.value)
 }
 
